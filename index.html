@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Auto Booster - Raj150k</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-card">
+            <div class="logo-area">
+                <i class="fab fa-youtube"></i>
+                <h2>VIP BOOSTER</h2>
+            </div>
+            
+            <!-- Username Field (Fixed) -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="fixedUser" value="raj150k" readonly>
+            </div>
+
+            <!-- Password Field -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="passwordInput" placeholder="পাসওয়ার্ড দিন">
+            </div>
+
+            <button onclick="handleLogin()" class="btn-primary">লগইন করুন</button>
+            
+            <!-- Telegram Link -->
+            <div class="tg-link" onclick="window.open('https://t.me/raj150k', '_blank')">
+                <i class="fab fa-telegram"></i> পাসওয়ার্ড জানতে ক্লিক করুন
+            </div>
+
+            <p id="errorMsg" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dashboardScreen" class="screen">
+        <nav>
+            <div class="brand">
+                <i class="fas fa-play-circle"></i> VIP Auto Play
+            </div>
+            <div class="admin-info">
+                <span class="badge">VIP</span>
+                <button onclick="toggleAdminPanel()" class="btn-icon"><i class="fas fa-cog"></i></button>
+                <button onclick="handleLogout()" class="btn-icon"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <h3><i class="fas fa-video"></i> ভিডিও লিংক</h3>
+                <input type="text" id="videoLink" placeholder="Paste YouTube Link Here...">
+                
+                <div class="settings-row">
+                    <label>ভিউ সংখ্যা:</label>
+                    <select id="multiplier">
+                        <option value="10">10x</option>
+                        <option value="50" selected>50x (Standard)</option>
+                        <option value="100">100x (VIP)</option>
+                        <option value="200">200x (Ultra)</option>
+                    </select>
+                </div>
+
+                <!-- Auto Start Button -->
+                <button onclick="startAutoBoosting()" id="actionBtn" class="btn-primary full-width">
+                    <i class="fas fa-magic"></i> অটো শুরু করুন
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar-bg">
+                    <div id="progressBar" style="width: 0%;"></div>
+                </div>
+                <p id="statusText">সিস্টেম প্রস্তুত...</p>
+            </div>
+
+            <!-- Video Grid -->
+            <div id="videoGrid" class="grid-container"></div>
+        </main>
+
+        <!-- Admin Panel (Hidden by default) -->
+        <div id="adminPanel" class="admin-panel">
+            <h3><i class="fas fa-user-cog"></i> এডমিন প্যানেল</h3>
+            <p>নতুন ইউজার তৈরি করুন</p>
+            <input type="text" id="newUsername" placeholder="নতুন Username">
+            <input type="password" id="newPassword" placeholder="নতুন Password">
+            <button onclick="addNewUser()" class="btn-primary small-btn">ইউজার যোগ করুন</button>
+            
+            <div class="user-list" id="userList">
+                <!-- Users will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
